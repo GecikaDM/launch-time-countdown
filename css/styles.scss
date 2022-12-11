@@ -1,0 +1,155 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+:root {
+
+  /* variables for background colol and main styles*/
+  --background-hills: url('/images/pattern-hills.svg');
+  --background-stars: url('/images/bg-stars.svg');
+  --background-color: hsl(263, 20%, 12%);
+  --main-size: 14px;
+  --font-redHat: 'Red Hat Text', sans-serif;
+  --font-family-color: hsl(0, 0%, 100%);
+  --font-family-weight: 700;
+
+  /* variables for countdown*/
+  --cards-color: hsl(236, 21%, 26%);
+  --numbers-color: hsl(345, 95%, 68%);
+  --font-size-number: 2.5rem;
+  --black-shadow: hsl(345, 95%, 68%);
+  --cards-color-top: hsl(236, 14%, 22%);
+
+}
+
+body {
+  background-image: var(--background-hills), var(--background-stars);
+  background-repeat: no-repeat, repeat;
+  background-position: 
+    bottom, top,
+    ;
+  background-color: var(--background-color);
+  background-size: contain;
+  height: 100vh;
+  font-size: var(--main-size);
+  font-family: var(--font-redHat);
+  color: var(--font-family-color);
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+
+h1{
+  text-transform: uppercase;
+  letter-spacing: .5rem;
+  pad: 1rem;
+  margin-bottom: 1rem;
+}
+
+
+.cards-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.flip-card {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, .5);
+  color: var(--numbers-color);
+  font-weight: var(--font-family-weight);
+  font-size: var(--font-size-number);
+}
+
+.top, .bottom,
+ .flip-card.flip::before,
+ .flip-card.flip::after {
+  height: .85em;
+  line-height: 1;
+  padding: .50em .50em;
+  overflow: hidden;
+}
+ .top {
+  background-color: var(--cards-color-top);
+ }
+
+ .bottom {
+  background-color: var(--cards-color);
+ }
+
+.top,
+.flip-card.flip::before {
+  border-radius: .2rem;
+  border-bottom: .5px solid rgba(0, 0, 0, 0.1);
+}
+
+.bottom, .flip-card.flip-card.flip::after{
+  display: flex;
+  align-items: flex-end;
+  border-radius: .2rem;
+}
+
+.flip-card.flip::before {
+  position: absolute;
+  content: '18';
+  animation: flip-top-down 350ms ease-in;
+  transform-origin: bottom;
+
+}
+
+@keyframes flip-top-down{
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+.flip-card.flip::after {
+  position: absolute;
+  bottom: 0;
+  content: '18';
+  animation: flip-bottom-down 350ms ease-out 350ms;
+  transform-origin: top;
+  transform: rotateX(90deg);
+}
+
+@keyframes flip-bottom-down {
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
+
+.network-icons-wrapper {
+  position: relative;
+  bottom: 0;
+  top: 35%;
+}
+
+.network-icons-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.network-icon {
+  margin: 1rem;
+}
+
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  
+}
